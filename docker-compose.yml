@@ -1,0 +1,53 @@
+version: '3.8'
+
+services:
+  # Core Processing
+  spark-master:
+    image: bitnami/spark:3.3.0
+    environment:
+      - SPARK_MODE=master
+      - SPARK_RPC_AUTHENTICATION_ENABLED=no
+      - SPARK_RPC_ENCRYPTION_ENABLED=no
+      - SPARK_LOCAL_STORAGE_ENCRYPTION_ENABLED=no
+      - SPARK_SSL_ENABLED=no
+    ports:
+      - "8080:8080"
+      - "7077:7077"
+
+  spark-worker:
+    image: bitnami/spark:3.3.0
+    environment:
+      - SPARK_MODE=worker
+      - SPARK_MASTER_URL=spark://spark-master:7077
+      - SPARK_WORKER_MEMORY=4G
+      - SPARK_WORKER_CORES=2
+    depends_on:
+      - spark-master
+
+  # Storage
+  postgres:
+    image: postgres:14-alpine
+    environment:
+      - POSTGRES_USER=dataforge
+      - POSTGRES_PASSWORD=dataforge
+      - POSTGRES_DB=dataforge
+    ports:
+      - "5432:5432"
+
+  redis:
+    image: redis:6-alpine
+    ports:
+      - "6379:6379"
+
+  # Monitoring
+  prometheus:
+    image: prom/prometheus:v2.30.3
+    ports:
+      - "9090:9090"
+
+  grafana:
+    image: grafana/grafana:8.2.0
+    ports:
+      - "3001:3000"
+    depends_on:
+      - prometheus 

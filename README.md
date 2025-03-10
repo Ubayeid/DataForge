@@ -58,7 +58,7 @@ DataForge is a high-performance data engineering platform that handles real-time
 ## Installation
 ```bash
 # Clone repository
-git clone https://github.com/yourusername/dataforge
+git clone https://github.com/ubayeid/dataforge
 
 # Setup environment
 make setup
