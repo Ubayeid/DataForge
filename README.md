@@ -97,4 +97,3 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
 
 ## License
 MIT License - see [LICENSE](LICENSE) 
->>>>>>> d575c94 (Initial commit)
