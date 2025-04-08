@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 # DataForge
 =======
 # DataForge - Enterprise Data Engineering Platform
