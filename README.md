@@ -1,6 +1,3 @@
-
-# DataForge
-=======
 # DataForge - Enterprise Data Engineering Platform
 
 [![Python](https://img.shields.io/badge/Python-3.9%2B-blue)](https://www.python.org/)
